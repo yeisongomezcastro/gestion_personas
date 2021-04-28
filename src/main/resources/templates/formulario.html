@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/base::head(dark)">
+    <meta charset="UTF-8">
+</head>
+<body>
+<header th:replace="layouts/base::header(dark)"></header>
+
+<div class="container">
+    <div class="card bg-dark">
+        <div class="card-header">
+            <h3>Nueva persona</h3>
+        </div>
+        <div class="card-body">
+            <form th:action="@{guardar}" th:object="${persona}" method="post">
+                <input type="hidden" th:field="*{identificationNumber}" />
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Identificacion</label>
+                    <div class="col-sm-6">
+                        <input type="text" th:field="*{identificationNumber}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Nombres</label>
+                    <div class="col-sm-6">
+                        <input type="text" th:field="*{names}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Apellidos</label>
+                    <div class="col-sm-6">
+                        <input type="text" th:field="*{surnames}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <input type="submit" value="Añadir persona" class="btn btn-outline-primary">
+                        <a th:href="@{lista}" class="btn btn-outline-danger">Cancelar</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="layouts/base::footer(dark)" class="bg-dark"></footer>
+</body>
+</html>

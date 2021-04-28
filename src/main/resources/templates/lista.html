@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/base::head(dark)">
+    <meta charset="UTF-8">
+</head>
+<body>
+<header th:replace="layouts/base::header(dark)"></header>
+
+<div class="container">
+    <div class="card bg-dark">
+        <div class="card-header">
+            <h3>Lista de Personas</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Identificacion</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="persona: ${personas}">
+                    <td th:text="${persona.identificationNumber}"></td>
+                    <td th:text="${persona.names}"></td>
+                    <td th:text="${persona.surnames}"></td>
+                    <td><a th:href="@{eliminar/} + ${persona.identificationNumber}" th:text="'Eliminar'" class="btn btn-outline-danger"></a></td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="5">
+                        <a th:href="@{crear}" class="btn btn-outline-primary btn-block">Añadir Persona</a>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="layouts/base::footer(dark)" class="bg-dark"></footer>
+</body>
+</html>
